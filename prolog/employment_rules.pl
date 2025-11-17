@@ -1,7 +1,3 @@
-% Employment / workplace rules (basic)
-
-% Facts for 'user' will be provided at runtime.
-
 % Salary due >= 2 months
 salary_due(Person) :-
     unpaid_salary_months(Person, Months),
@@ -20,3 +16,4 @@ employment_remedy(Person) :-
     salary_due(Person);
     wrongful_termination(Person);
     harassment_reported(Person).
+
