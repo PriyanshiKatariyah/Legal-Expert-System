@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Analysis Result — {{ domain_name }}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body class="bg">
+  <header class="topbar">
+  <div class="navbar">
+      <div class="nav-left">
+          <div class="scale">⚖</div>
+          <div class="brand-title">NyayAssist</div>
+      </div>
+
+      <div class="nav-right">
+          <a href="#home">Home</a>
+          <a href="#domains">Domains</a>
+          <a href="{{ url_for('about') }}">About</a>
+      </div>
+  </div>
+</header>
+
+
+  <main class="container results-container">
+    <div class="card result-summary">
+      <h3 class="card-title">Case Analysis</h3>
+
+      {% for r in results %}
+        <div class="result-card">
+          <div class="result-head">
+            <div class="result-title">{{ r.title }}</div>
+            {% if r.result == 'YES' %}
+              <div class="badge yes">YES</div>
+            {% else %}
+              <div class="badge no">NO</div>
+            {% endif %}
+          </div>
+
+          <div class="explain">
+            <div class="label">Reasoning</div>
+            <div class="text">{{ r.advice }}</div>
+          </div>
+
+          <div class="advice">
+            <div class="label">Recommended Action</div>
+            <ul>
+              {% if r.next_steps %}
+                {% for step in r.next_steps %}
+                  <li>{{ step }}</li>
+                {% endfor %}
+              {% else %}
+                {% if r.result == 'YES' %}
+                  <li>Follow the recommended legal step (see explanation).</li>
+                  <li>Document communications and retain evidence.</li>
+                  <li>Seek mediation or legal consultation if necessary.</li>
+                {% else %}
+                  <li>Current facts do not satisfy this action.</li>
+                  <li>Collect additional evidence or review terms to re-check.</li>
+                {% endif %}
+              {% endif %}
+            </ul>
+          </div>
+
+        </div>
+      {% endfor %}
+
+      <div class="actions">
+        <a class="primary" href="{{ url_for('index') }}">Home</a>
+        <a class="link" href="javascript:history.back()">Analyze Another Case</a>
+      </div>
+    </div>
+  </main>
+
+<footer class="footer">
+  <div>© 2025 NyayAssist — AI Legal Expert System</div>
+  <div class="small">For academic use only. Not real legal advice.</div>
+</footer>
+
+</body>
+</html>
+
+</body>
+</html>

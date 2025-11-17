@@ -1,0 +1,150 @@
+/* Law-style theme: navy + white */
+:root{
+  --navy:#112244;
+  --royal:#0b3b66;
+  --muted:#e7edf6;
+  --card:#ffffff;
+  --accent:#d4af37;
+  --text:#0f1b2d;
+  --soft:#f6f8fb;
+}
+
+*{box-sizing:border-box}
+body.bg{
+  margin:0;
+  font-family:"Inter",system-ui,Segoe UI,Roboto,Helvetica,Arial;
+  background:linear-gradient(180deg,#f3f7fb,#eef4fb);
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+}
+
+.topbar{
+  background:var(--navy);
+  color:white;
+  padding:18px 28px;
+}
+.topbar.small{padding:12px 20px}
+.brand{display:flex;gap:14px;align-items:center}
+.scale{font-size:28px;background:rgba(255,255,255,0.06);width:52px;height:52px;border-radius:10px;display:flex;align-items:center;justify-content:center}
+.title{font-family:"Merriweather",serif;font-size:20px;font-weight:700}
+.subtitle{font-size:13px;opacity:0.9}
+
+.container{width:980px;margin:28px auto;padding-bottom:48px}
+
+.hero{background:var(--card);padding:34px;border-radius:12px;box-shadow:0 10px 30px rgba(16,30,60,0.06)}
+.hero h2{margin:0;font-family:"Merriweather",serif;color:var(--navy);font-size:26px}
+.hero-sub{margin:8px 0 18px;color:#3a506a}
+
+.domains{display:flex;gap:16px;flex-wrap:wrap;margin-top:8px}
+.domain-card{display:block;width:30%;min-width:210px;background:linear-gradient(180deg,#ffffff,#fbfdff);padding:16px;border-radius:10px;text-decoration:none;color:var(--text);box-shadow:0 6px 18px rgba(12,30,50,0.06);border:1px solid var(--muted)}
+.domain-icon{font-size:22px}
+.domain-title{font-weight:700;margin-top:8px}
+.domain-desc{color:#586b80;margin-top:6px;font-size:13px}
+.note{margin-top:18px;padding:12px;background:#fbfdff;border-radius:8px;border:1px solid #eef6ff;color:#25425a}
+
+.footer{margin-top:20px;padding:12px;color:#48627b;display:flex;justify-content:space-between;align-items:center;font-size:13px}
+.footer .tech{font-weight:700;color:var(--royal)}
+
+/* Form layout */
+.form-container{margin-top:20px}
+.form-card{padding:22px;border-radius:12px;background:var(--card);box-shadow:0 10px 30px rgba(16,30,60,0.05)}
+.card-title{font-family:"Merriweather",serif;font-size:20px;margin-bottom:12px;color:var(--navy)}
+.case-form label{display:block;font-weight:600;margin-top:12px;color:#17324a}
+.case-form select,.case-form input[type="number"],.case-form input[type="text"]{
+  width:100%;padding:9px 10px;border-radius:8px;border:1px solid #dbe7f3;margin-top:6px;background:#fbfdff;
+}
+.two-col{display:flex;gap:12px}
+.two-col > div{flex:1}
+.actions{display:flex;gap:12px;align-items:center;margin-top:18px}
+.primary{background:var(--royal);color:white;padding:10px 16px;border-radius:8px;text-decoration:none;border:none;cursor:pointer;font-weight:700}
+.link{color:var(--royal);text-decoration:none;margin-left:8px}
+
+/* Results */
+.results-container{margin-top:20px}
+.result-summary{padding:18px;border-radius:12px;background:var(--card);box-shadow:0 10px 30px rgba(16,30,60,0.05)}
+.result-card{border-radius:10px;padding:14px;border:1px solid #eef6ff;margin-bottom:12px;background:linear-gradient(180deg,#ffffff,#fbfdff)}
+.result-head{display:flex;justify-content:space-between;align-items:center}
+.result-title{font-weight:700;color:var(--navy)}
+.badge{padding:6px 10px;border-radius:8px;color:white;font-weight:800}
+.badge.yes{background:#1f9d57}
+.badge.no{background:#d9534f}
+
+.explain{margin-top:8px}
+.explain .label{font-weight:700;color:#16324d;font-size:13px}
+.explain .text{margin-top:6px;color:#28485f}
+
+.advice{margin-top:10px}
+.advice .label{font-weight:700;color:#16324d;font-size:13px}
+.advice ul{margin:8px 0 0 18px;color:#304b61}
+
+@media (max-width:1000px){
+  .container{width:92%}
+  .domain-card{width:48%}
+  .two-col{flex-direction:column}
+}
+
+.main-title {
+    font-family: "Merriweather", serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 6px;
+    text-align: center;
+}
+
+.main-subtitle {
+    text-align: center;
+    font-size: 16px;
+    color: #34506b;
+    margin-bottom: 20px;
+}
+
+/* ------------------------------
+   NAVIGATION BAR BUTTON STYLING
+--------------------------------*/
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-right a {
+    text-decoration: none;
+    color: #e3e9f2;
+    margin-left: 22px;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 6px 4px;
+    position: relative;
+    transition: all 0.25s ease;
+}
+
+.nav-right a:hover {
+    color: #ffffff;
+}
+
+/* Underline hover effect */
+.nav-right a::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: #d4af37; /* gold accent */
+    left: 0;
+    bottom: -2px;
+    transition: 0.3s;
+}
+
+.nav-right a:hover::after {
+    width: 100%;
+}
+
+/* Brand Title */
+.brand-title {
+    font-family: "Merriweather", serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-left: 10px;
+}
