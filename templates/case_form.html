@@ -38,9 +38,7 @@
 
       <input type="hidden" name="domain" value="{{ domain }}">
 
-      <!-- --------------------------------------------------------------
-           TENANT–LANDLORD DOMAIN
-      ----------------------------------------------------------------- -->
+      <!-- TENANT–LANDLORD DOMAIN -->
       {% if domain == 'tenant' %}
         <label>Rent Paid</label>
         <select name="rent_paid">
@@ -84,9 +82,7 @@
         </select>
       {% endif %}
 
-      <!-- --------------------------------------------------------------
-           CONSUMER RIGHTS DOMAIN
-      ----------------------------------------------------------------- -->
+      <!-- CONSUMER RIGHTS DOMAIN -->
       {% if domain == 'consumer' %}
         <label>Product Defective?</label>
         <select name="defective">
@@ -113,9 +109,7 @@
         </select>
       {% endif %}
 
-      <!-- --------------------------------------------------------------
-           CONTRACT DISPUTES DOMAIN
-      ----------------------------------------------------------------- -->
+      <!--  CONTRACT DISPUTES DOMAIN -->
       {% if domain == 'contract' %}
         <label>Signed by Both Parties?</label>
         <select name="signed_by_both">
@@ -136,9 +130,7 @@
         <input type="number" name="days_since_breach" value="0" min="0">
       {% endif %}
 
-      <!-- --------------------------------------------------------------
-           TRAFFIC VIOLATIONS DOMAIN
-      ----------------------------------------------------------------- -->
+      <!--  TRAFFIC VIOLATIONS DOMAIN -->
       {% if domain == 'traffic' %}
         <label>Helmet Worn?</label>
         <select name="helmet">
@@ -170,9 +162,7 @@
         </select>
       {% endif %}
 
-      <!-- --------------------------------------------------------------
-           CYBER FRAUD DOMAIN
-      ----------------------------------------------------------------- -->
+      <!--  CYBER FRAUD DOMAIN -->
       {% if domain == 'cyber' %}
         <label>Shared OTP with Anyone?</label>
         <select name="otp_shared">
@@ -190,9 +180,7 @@
         </select>
       {% endif %}
 
-      <!-- --------------------------------------------------------------
-           EMPLOYMENT / WORKPLACE DOMAIN
-      ----------------------------------------------------------------- -->
+      <!-- EMPLOYMENT / WORKPLACE DOMAIN -->
       {% if domain == 'employment' %}
         <label>Unpaid Salary (Months)</label>
         <input type="number" name="unpaid_salary_months" value="0" min="0">
@@ -208,9 +196,7 @@
         </select>
       {% endif %}
 
-      <!-- --------------------------------------------------------------
-           ACTION BUTTONS
-      ----------------------------------------------------------------- -->
+      <!--  ACTION BUTTONS -->
       <div class="actions">
         <button class="primary" type="submit">Get Legal Analysis</button>
         <a class="link" href="{{ url_for('index') }}">← Back</a>
