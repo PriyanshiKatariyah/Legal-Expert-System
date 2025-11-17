@@ -1,7 +1,5 @@
 % Tenant-Landlord rules (knowledge + rules)
 
-% Facts will be written to facts_temp.pl at runtime for 'user'.
-
 % Eviction invalid if rent is paid and notice is given
 eviction_invalid(Person) :-
     rent_paid(Person),
@@ -30,3 +28,4 @@ eviction_allowed(Person) :-
 tenant_rights_deposit(Person) :-
     property_damage(Person, no),
     deposit_not_returned(Person).
+
