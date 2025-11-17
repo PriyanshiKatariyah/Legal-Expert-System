@@ -1,7 +1,5 @@
 % Cyber fraud / online crime rules
 
-% Facts for 'user' written at runtime.
-
 % Shared OTP indicates high fraud risk
 shared_otp(Person) :-
     otp_shared(Person).
@@ -22,3 +20,4 @@ identity_theft_risk(Person) :-
 % Suggested action rule
 file_cyber_complaint(Person) :-
     (unauthorized_transfer(Person) ; identity_theft_risk(Person)).
+
