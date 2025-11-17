@@ -1,8 +1,7 @@
 import os
 
-# -----------------------------------------
 # Configure SWI-Prolog Environment
-# -----------------------------------------
+
 os.environ["SWI_HOME_DIR"] = r"C:\SWI-Prolog"
 os.environ["PATH"] += os.pathsep + r"C:\SWI-Prolog\bin"
 
@@ -11,15 +10,11 @@ from pyswip import Prolog
 
 app = Flask(__name__)
 
-# -----------------------------------------
 # Paths
-# -----------------------------------------
 PROLOG_DIR = os.path.join(os.path.dirname(__file__), "prolog")
 FACTS_FILE = os.path.join(PROLOG_DIR, "facts_temp.pl")
 
-# -----------------------------------------
 # Domains (Shown on Homepage)
-# -----------------------------------------
 DOMAINS = {
     "tenant": "Tenant–Landlord Disputes",
     "consumer": "Consumer Rights",
@@ -29,9 +24,7 @@ DOMAINS = {
     "employment": "Employment / Workplace Issues"
 }
 
-# -----------------------------------------
 # DOMAIN CONFIG (Queries + Advice + Rule Files)
-# -----------------------------------------
 DOMAIN_CONFIG = {
     "tenant": {
         "queries": [
@@ -272,13 +265,11 @@ DOMAIN_CONFIG = {
     }
 }
 
-# ---------------------------------------------------
 # WRITE FACTS FOR EACH DOMAIN
-# ---------------------------------------------------
 def write_facts(domain, form):
     lines = []
 
-    # ---------- TENANT ----------
+    # TENANT 
     if domain == "tenant":
         if form.get("rent_paid") == "Yes":
             lines.append("rent_paid(user).")
@@ -291,7 +282,7 @@ def write_facts(domain, form):
         lines.append(f"rent_unpaid_months(user, {int(form.get('rent_unpaid') or 0)}).")
         lines.append(f"written_agreement(user, {form.get('written_agreement','no')}).")
 
-    # ---------- CONSUMER ----------
+    # CONSUMER
     elif domain == "consumer":
         if form.get("defective") == "Yes":
             lines.append("product_defective(user).")
@@ -301,7 +292,7 @@ def write_facts(domain, form):
         if form.get("warranty") == "Yes":
             lines.append("warranty_active(user).")
 
-    # ---------- CONTRACT ----------
+    # CONTRACT
     elif domain == "contract":
         if form.get("signed_by_both") == "Yes":
             lines.append("signed_by_both(user).")
@@ -311,7 +302,7 @@ def write_facts(domain, form):
             lines.append("terms_broken(user).")
         lines.append(f"days_since_breach(user, {int(form.get('days_since_breach') or 0)}).")
 
-    # ---------- TRAFFIC ----------
+    #  TRAFFIC 
     elif domain == "traffic":
         lines.append(f"helmet(user, {form.get('helmet','yes')}).")
         has_license = "yes" if form.get("license") == "Yes" else "no"
@@ -321,7 +312,7 @@ def write_facts(domain, form):
         lines.append(f"breathalyzer(user, {float(form.get('breathalyzer') or 0.0)}).")
         lines.append(f"seatbelt(user, {form.get('seatbelt','yes')}).")
 
-    # ---------- CYBER ----------
+    # CYBER 
     elif domain == "cyber":
         if form.get("otp_shared") == "Yes":
             lines.append("otp_shared(user).")
@@ -332,7 +323,7 @@ def write_facts(domain, form):
         if form.get("unauthorized_transaction") == "Yes":
             lines.append("unauthorized_transaction(user).")
 
-    # ---------- EMPLOYMENT ----------
+    #  EMPLOYMENT 
     elif domain == "employment":
         lines.append(f"unpaid_salary_months(user, {int(form.get('unpaid_salary_months') or 0)}).")
         tw = "yes" if form.get("terminated_without_notice") == "Yes" else "no"
@@ -345,10 +336,7 @@ def write_facts(domain, form):
         for ln in lines:
             f.write(ln + "\n")
 
-
-# ---------------------------------------------------
 # ROUTES
-# ---------------------------------------------------
 @app.route("/")
 def index():
     return render_template("index.html", domains=DOMAINS)
@@ -407,9 +395,6 @@ def analyze():
 
     return render_template("result.html", domain_name=DOMAINS[domain], results=results)
 
-
-# ---------------------------------------------------
-# RUN
-# ---------------------------------------------------
 if __name__ == "__main__":
     app.run(debug=True)
+
