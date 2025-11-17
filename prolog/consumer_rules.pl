@@ -1,7 +1,3 @@
-% ----------------------------------------------------
-% Consumer Rights Expert System Rules
-% ----------------------------------------------------
-
 % Refund allowed if the product is defective within 10 days
 refund_allowed(Person) :-
     product_defective(Person),
@@ -29,3 +25,4 @@ consumer_complaint_possible(Person) :-
 
 consumer_complaint_possible(Person) :-
     \+ bill_present(Person).   % no bill → complaint still possible
+
