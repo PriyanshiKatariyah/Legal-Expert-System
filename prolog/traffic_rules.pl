@@ -1,7 +1,5 @@
 % Traffic violations rules (medium complexity)
 
-% Facts generated at runtime for 'user'.
-
 % Helmet missing
 helmet_missing(Person) :-
     helmet(Person, no).
@@ -28,3 +26,4 @@ seatbelt_missing(Person) :-
 % Example composite query: Serious traffic offence
 serious_traffic_offence(Person) :-
     (drunk_driving(Person) ; license_invalid(Person), overspeeding(Person)).
+
