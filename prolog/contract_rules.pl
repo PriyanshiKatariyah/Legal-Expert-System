@@ -1,5 +1,3 @@
-% Contract rules (basic)
-
 % Contract valid if signed by both and essential terms present
 contract_valid(Person) :-
     signed_by_both(Person),
@@ -14,3 +12,4 @@ contract_remedy(Person) :-
     breach_of_contract(Person),
     days_since_breach(Person, Days),
     Days >= 0.
+
